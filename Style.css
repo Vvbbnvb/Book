@@ -1,0 +1,229 @@
+/* Font Face Definition */
+@font-face {
+    font-family: "LifeLogoHard";
+    src: url("path/to/LifeLogoHard.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Root Variables */
+:root {
+    --primary-color: #1e3888;
+    --secondary-color: #d4af37;
+    --text-color: #333333;
+    --background-color: #f0f8ff;
+    --background-color-print: #ffffff;
+    --accent-color: #ff8c00; /* Orange for creative elements */
+    --font-size-base: 16px;
+    --font-size-large: 18px;
+    --font-size-small: 14px;
+    --line-height: 1.6;
+    --spacing-unit: 20px;
+    --spacing-unit-small: 10px;
+    --spacing-unit-large: 40px;
+}
+
+/* General Body Styling */
+body {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: var(--line-height);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+}
+
+/* Media Query for Print */
+@media print {
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        background-color: var(--background-color-print);
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    @page {
+        size: 6in 9in;
+        margin: 0.75in;
+    }
+}
+
+/* Chapter Title Page Styling */
+.chapter-title-page {
+    text-align: center;
+    margin-bottom: var(--spacing-unit-large);
+    padding: var(--spacing-unit);
+}
+
+.chapter-number {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-unit-small);
+}
+
+.roman-numeral {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.5em;
+}
+
+.chapter-title {
+    font-family: "LifeLogoHard", sans-serif; /* Use LifeLogoHard for chapter title */
+    font-size: calc(3em + 1vw); /* Responsive font size */
+    margin: 20px 0;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    position: relative;
+    padding: var(--spacing-unit) 0;
+}
+
+.chapter-title::before,
+.chapter-title::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background-color: var(--text-color);
+}
+
+.chapter-title::before {
+    top: 0;
+    left: 20%;
+}
+
+.chapter-title::after {
+    bottom: 0;
+    left: 20%;
+}
+
+.font-note {
+    font-style: italic;
+    margin-top: var(--spacing-unit-small);
+}
+
+.bible-scripture {
+    text-align: center;
+    margin-top: var(--spacing-unit-large);
+    font-style: italic;
+    page-break-inside: avoid;
+}
+
+/* Responsive Design Adjustments */
+@media screen and (max-width: 1200px) {
+    body {
+        font-size: var(--font-size-large);
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.4em;
+    }
+    .chapter-title {
+        font-size: 2.6em;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        font-size: var(--font-size-base);
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.6em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    .chapter-title {
+        font-size: 2.4em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: var(--font-size-small);
+        line-height: 1.4;
+        padding: var(--spacing-unit) var(--spacing-unit-small);
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+    .chapter-title {
+        font-size: 2.2em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    h3 {
+        font-size: 1em;
+    }
+    .chapter-title {
+        font-size: 2em;
+    }
+}
+
+/* Accessibility Enhancements */
+main[role="main"] {
+    outline: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px dashed var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        transition: all 0.3s ease;
+    }
+}
